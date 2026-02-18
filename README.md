@@ -21,7 +21,7 @@ pip install shuntly
 
 ## Integrate
 
-Given an LLM SDK (e.g. [`anthropic`](https://pypi.org/project/anthropic), [`openai`](https://pypi.org/project/openai]), [`google-genai`](https://pypi.org/project/google-genai)), simply call `shunt()` with the instantiated SDK class. The returned object has the same type and interface.
+Given an LLM SDK (e.g. [`anthropic`](https://pypi.org/project/anthropic), [`openai`](https://pypi.org/project/openai]), [`google-genai`](https://pypi.org/project/google-genai), etc.), simply call `shunt()` with the instantiated SDK class. The returned object has the same type and interface.
 
 ```python
 from anthropic import Anthropic
@@ -54,6 +54,26 @@ Each call to `messages.create()` writes a complete JSON record:
   "error": null
 }
 ```
+
+## Diversify
+
+Shuntly presently supports the following SDKs and clients:
+
+| Client | Package | Methods |
+|--------|---------|---------|
+| `anthropic.Anthropic` | [`PyPI`](https://pypi.org/project/anthropic) | `messages.create`, `messages.stream` |
+| `openai.OpenAI` | [`PyPI`](https://pypi.org/project/openapi) | `chat.completions.create` |
+| `google.genai.Client` | [`PyPI`](https://pypi.org/project/google-genai) | `models.generate_content` |
+| `litellm` | [`PyPI`](https://pypi.org/project/litellm) | `completion` |
+| `any-llm` | [`PyPI`](https://pypi.org/project/any-llm-sdk) | `completion` |
+| `ollama`, `ollama.Client` | [`PyPI`](https://pypi.org/project/ollama) | `chat`, `generate` |
+
+For anything else, method paths can be explicitly provided:
+
+```python
+client = shunt(my_client, methods=["chat.send", "embeddings.create"])
+```
+
 
 ## View
 
@@ -153,29 +173,12 @@ class SinkPrint(Sink):
         print(record.client, record.method, record.duration_ms)
 ```
 
-## Supported SDKs
 
-Shuntly presently handles these clients:
-
-| Client | Package | Methods |
-|--------|---------|---------|
-| `anthropic.Anthropic` | [`PyPI`](https://pypi.org/project/anthropic) | `messages.create`, `messages.stream` |
-| `openai.OpenAI` | [`PyPI`](https://pypi.org/project/openapi) | `chat.completions.create` |
-| `google.genai.Client` | [`PyPI`](https://pypi.org/project/google-genai) | `models.generate_content` |
-| `litellm` | [`PyPI`](https://pypi.org/project/litellm) | `completion` |
-| `any-llm` | [`PyPI`](https://pypi.org/project/any-llm-sdk) | `completion` |
-| `ollama`, `ollama.Client` | [`PyPI`](https://pypi.org/project/ollama) | `chat`, `generate` |
-
-For anything else, method paths can be explicitly provided:
-
-```python
-client = shunt(my_client, methods=["chat.send", "embeddings.create"])
-```
 
 ## What is New in Shuntly
 
 
-### dev
+### 0.8.0
 
 Added support for Mozilla `any_llm.completion()`
 

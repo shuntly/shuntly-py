@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "shuntly"
-version = "0.7.0"
+version = "0.8.0"
 description = "A lightweight wiretap for LLM SDKs: capture all requests and responses with a single line of code"
 requires-python = ">=3.10"
 license = "MIT"
