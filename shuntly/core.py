@@ -29,6 +29,14 @@ _METHOD_REGISTRY: dict[str, list[str]] = {
     'any_llm': [
         'completion',
     ],
+    'ollama': [
+        'chat',
+        'generate',
+    ],
+    'ollama._client.Client': [
+        'chat',
+        'generate',
+    ],
 }
 
 

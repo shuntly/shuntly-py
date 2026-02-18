@@ -164,6 +164,7 @@ Shuntly presently handles these clients:
 | `google.genai.Client` | [`PyPI`](https://pypi.org/project/google-genai) | `models.generate_content` |
 | `litellm` | [`PyPI`](https://pypi.org/project/litellm) | `completion` |
 | `any-llm` | [`PyPI`](https://pypi.org/project/any-llm-sdk) | `completion` |
+| `ollama`, `ollama.Client` | [`PyPI`](https://pypi.org/project/ollama) | `chat`, `generate` |
 
 For anything else, method paths can be explicitly provided:
 
@@ -177,6 +178,8 @@ client = shunt(my_client, methods=["chat.send", "embeddings.create"])
 ### dev
 
 Added support for Mozilla `any_llm.completion()`
+
+Added support for Ollama interfaces.
 
 
 ### 0.7.0

@@ -27,6 +27,7 @@ dev = [
     "litellm==1.81.10",
     "python-dotenv==1.2.1",
     "any-llm-sdk[openai]==1.8.5; python_version>='3.11'",
+    "ollama==0.6.1",
     ]
 
 [tool.setuptools.packages.find]
